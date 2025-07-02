@@ -8,37 +8,44 @@
         <input type="text"
           [(ngModel)]="item.firstName"
           class="form-control"
-          required>
+          required
+          #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': firstName.touched && firstName.invalid }">
       </div>
 
       <div class="col-2">
         <input type="text"
           [(ngModel)]="item.lastName"
           class="form-control"
-          required>
+          required
+          #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': lastName.touched && lastName.invalid }">
       </div>
 
       <div class="col-2">
         <input type="text"
           [(ngModel)]="item.email"
           class="form-control"
-          required>
+          required
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': email.touched && email.invalid }">
       </div>
 
       <div class="col-2">
         <input type="text"
           [(ngModel)]="item.phone"
           class="form-control"
-          required>
-      </div>
+          required
+          #phone="ngModel"
+          [ngClass]="{ 'is-invalid': phone.touched && phone.invalid }">
+      </div>      
 
       <div class="col-2">
         <img
           [src]="'http://localhost/studentdirectoryangular/studentapi/uploads/' + item.imageName"
           width="75"
-          height="85"
-          alt="{{item.firstName}} {{item.lastName}}"
-        />
+          height="75"
+          alt="{{item.imageName}}">
       </div>
 
     </div>
