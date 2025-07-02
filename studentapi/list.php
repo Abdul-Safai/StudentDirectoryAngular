@@ -21,7 +21,7 @@
             $count++;
         }
 
-        echo json_encode(['data'=>$students]);
+      echo json_encode(['data'=>$students]);
     }
     else
     {
