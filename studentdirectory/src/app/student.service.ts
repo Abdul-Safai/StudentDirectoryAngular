@@ -10,7 +10,7 @@ import { Student } from './student';
 })
 
 export class StudentService {
-    baseUrl = 'http://localhost/studentdirectoryangular/contactapi';
+    baseUrl = 'http://localhost/studentdirectoryangular/studentapi';
 
     constructor(private http: HttpClient)
     {

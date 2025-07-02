@@ -1,0 +1,46 @@
+<div id="theList">
+  <h2>Student List</h2>    
+
+  <div>
+    <div *ngFor="let item of students; let i = index;" class="row">
+
+      <div class="col-2">
+        <input type="text"
+          [(ngModel)]="item.firstName"
+          class="form-control"
+          required>
+      </div>
+
+      <div class="col-2">
+        <input type="text"
+          [(ngModel)]="item.lastName"
+          class="form-control"
+          required>
+      </div>
+
+      <div class="col-2">
+        <input type="text"
+          [(ngModel)]="item.email"
+          class="form-control"
+          required>
+      </div>
+
+      <div class="col-2">
+        <input type="text"
+          [(ngModel)]="item.phone"
+          class="form-control"
+          required>
+      </div>
+
+      <div class="col-2">
+        <img
+          [src]="'http://localhost/studentdirectoryangular/studentapi/uploads/' + item.imageName"
+          width="75"
+          height="85"
+          alt="{{item.firstName}} {{item.lastName}}"
+        />
+      </div>
+
+    </div>
+  </div>
+</div>

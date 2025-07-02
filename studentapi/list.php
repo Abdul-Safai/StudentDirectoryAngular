@@ -1,33 +1,35 @@
 <?php
-    require 'connect.php'
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    $students = [];
-    $sql = "SELECT ID, firstName, lastname, email, phoneNumber, program, imageName FROM students";
+require 'connect.php';   // ✅ Add semicolon
 
-    if($result = mysqli_query($con, $sql))
+header('Content-Type: application/json');
+
+$students = [];
+$sql = "SELECT ID, firstName, lastName, email, phoneNumber, program, imageName FROM students";
+
+if($result = mysqli_query($con, $sql))
+{
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result))
     {
-        $count = 0;
-        while ($row = mysqli_fetch_assoc($result))
-        {
-            $students[$count]['studentID'] = $row['studentID'];
-            $contacts[$count]['firstName'] = $row['firstName'];
-            $contacts[$count]['lastName'] = $row['lastName'];
-            $contacts[$count]['email'] = $row['email'];
-            $contacts[$count]['phone'] = $row['phone'];
-            $contacts[$count]['program'] = $row['program'];
-            $contacts[$count]['imageName'] = $row['imageName'];
-            $contacts[$count]['typeID'] = $row['typeID'];
-
-            $count++;
-        }
-
-      echo json_encode(['data'=>$students]);
-    }
-    else
-    {
-        http_response_code(404);
+        $students[$count]['ID'] = $row['ID'];               // ✅ Match column names
+        $students[$count]['firstName'] = $row['firstName'];
+        $students[$count]['lastName'] = $row['lastName'];
+        $students[$count]['email'] = $row['email'];
+        $students[$count]['phone'] = $row['phoneNumber'];   // ✅ Match SELECT field
+        $students[$count]['program'] = $row['program'];
+        $students[$count]['imageName'] = $row['imageName'];
+        // If you have typeID, add it too!
+        // $students[$count]['typeID'] = $row['typeID'];
+        $count++;
     }
 
-    
+    echo json_encode(['data' => $students]);
+}
+else
+{
+    http_response_code(404);
+}
 ?>
-

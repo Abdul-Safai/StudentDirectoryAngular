@@ -4,6 +4,7 @@ export interface Student {
     lastName: string;
     email?: string;
     phone?: string;
+    program?: string;
     imageName?: string;
     typeID?: number;
 }

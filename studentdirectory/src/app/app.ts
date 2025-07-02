@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-import { NgForm } from '@angular/forms';
-
-import { Student } from './student';
-import { StudentService } from './student.service';
-
-import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';   // ✅ Add FormsModule here
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,  // ✅ Using standalone API
+  imports: [
+    RouterOutlet,
+    FormsModule       // ✅ Enables [(ngModel)] everywhere in your app!
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
-  protected title = 'contactmanager';
+  protected title = 'stud';  // ✅ Your project title
 }
